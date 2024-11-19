@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use {
     crate::blockstore_meta::SlotMeta,
     bitflags::bitflags,

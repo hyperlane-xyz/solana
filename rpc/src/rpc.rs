@@ -1,3 +1,4 @@
+#![allow(warnings)]
 //! The `rpc` module implements the Solana RPC interface.
 
 use {
