@@ -1,3 +1,4 @@
+#![allow(warnings)]
 use {
     crate::{
         cli::{CliCommand, CliCommandInfo, CliConfig, CliError, ProcessResult},

@@ -1,3 +1,4 @@
+#![allow(warnings)]
 //! The `replay_stage` replays transactions broadcast by the leader.
 
 use {
