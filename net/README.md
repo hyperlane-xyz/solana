@@ -5,7 +5,7 @@ intended to be both dev and CD friendly.
 
 ### User Account Prerequisites
 
-GCP, AWS, colo are supported.
+GCP, AWS, colo is supported.
 
 #### GCP
 First authenticate with
@@ -21,8 +21,7 @@ $ aws configure
 More information on AWS CLI configuration can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration)
 
 ### Metrics configuration (Optional)
-Ensure that `$(whoami)` is the name of an InfluxDB user account with enough
-access to create a new InfluxDB database.  Ask mvines@ for help if needed.
+Ensure that $(whoami) matches an InfluxDB user account with sufficient access to create a new InfluxDB database.  Ask mvines@ for help if needed.
 
 ## Quick Start
 
@@ -34,7 +33,7 @@ $ cd net/
 $ ./gce.sh create -n 5 -c 1     #<-- Create a GCE testnet with 5 additional nodes (beyond the bootstrap node) and 1 client (billing starts here)
 $ ./init-metrics.sh $(whoami)   #<-- Recreate a metrics database for the testnet and configure credentials
 $ ./net.sh start                #<-- Deploy the network from the local workspace and start processes on all nodes including bench-tps on the client node
-$ ./ssh.sh                      #<-- Show a help to ssh into any testnet node to access logs/etc
+$ ./ssh.sh                      #<-- Show help to ssh into any testnet node to access logs/etc
 $ ./net.sh stop                 #<-- Stop running processes on all nodes
 $ ./gce.sh delete               #<-- Dispose of the network (billing stops here)
 ```
@@ -43,7 +42,7 @@ $ ./gce.sh delete               #<-- Dispose of the network (billing stops here)
 
 ### Running the network over public IP addresses
 By default private IP addresses are used with all instances in the same
-availability zone to avoid GCE network engress charges.  However to run the
+availability zone to avoid GCE network egress charges.  However to run the
 network over public IP addresses:
 ```bash
 $ ./gce.sh create -P ...
@@ -76,7 +75,7 @@ is detected at runtime and the CUDA build is auto selected.
 
 ### Partition testing
 
-To induce the partition `net.sh netem --config-file <config file path>`
+To induce partitioning, run net.sh netem --config-file <config file path>`
 To remove partition `net.sh netem --config-file <config file path> --netem-cmd cleanup`
 The partitioning is also removed if you do `net.sh stop` or `restart`.
 
