@@ -26,7 +26,7 @@ stabilization branches.
 Merging to `master` first also helps ensure that fixes applied to one release
 are present for future releases.  (Sometimes the joy of landing a critical
 release blocker in a branch causes you to forget to propagate back to
-`master`!)"
+`master`!)
 
 Once the bug fix lands on `master` it is cherry-picked into the `vX.Y` branch
 and potentially the `vX.Y-1` branch.  The exception to this rule is when a bug
@@ -76,7 +76,7 @@ There are three release channels that map to branches as follows:
     git push -u origin <branchname>
     ```
 
-Alternatively use the Github UI.
+Alternatively use the GitHub UI.
 
 ### Update master branch to the next release minor version
 
@@ -86,7 +86,7 @@ Alternatively use the Github UI.
      ```
 1. Push all the changed Cargo.toml and Cargo.lock files to the `master` branch with something like:
     ```
-    git co -b version_update
+    git switch -c version_update
     git ls-files -m | xargs git add
     git commit -m 'Bump version to X.Y+1.0'
     git push -u origin version_update
@@ -99,7 +99,7 @@ Alternatively use the Github UI.
 ### Miscellaneous Clean up
 
 1. Update [mergify.yml](https://github.com/solana-labs/solana/blob/master/.mergify.yml) to add backport actions for the new branch and remove actions for the obsolete branch.
-1. Adjust the [Github backport labels](https://github.com/solana-labs/solana/labels) to add the new branch label and remove the label for the obsolete branch.
+1. Adjust the [GitHub backport labels](https://github.com/solana-labs/solana/labels) to add the new branch label and remove the label for the obsolete branch.
 1. Announce on Discord #development that the release branch exists so people know to use the new backport labels.
 
 ## Steps to Create a Release
@@ -130,7 +130,7 @@ Alternatively use the Github UI.
 ### Prepare for the next release
 1.  Go to [GitHub Releases](https://github.com/solana-labs/solana/releases) and create a new draft release for `X.Y.Z+1` with empty release notes.  This allows people to incrementally add new release notes until it's time for the next release
     1. Also, point the branch field to the same branch and mark the release as **"This is a pre-release"**.
-1.  Go to the [Github Milestones](https://github.com/solana-labs/solana/milestones).  Create a new milestone for the `X.Y.Z+1`, move over
+1.  Go to the [GitHub Milestones](https://github.com/solana-labs/solana/milestones).  Create a new milestone for the `X.Y.Z+1`, move over
 unresolved issues still in the `X.Y.Z` milestone, then close the `X.Y.Z` milestone.
 
 ### Verify release automation success

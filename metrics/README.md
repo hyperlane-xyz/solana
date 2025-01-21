@@ -4,10 +4,10 @@
 
 ## InfluxDB
 
-In oder to explore validator specific metrics from mainnet-beta, testnet or devnet you can use Chronograf:
+In order to explore validator specific metrics from mainnet-beta, testnet or devnet you can use Chronograf:
 
-* https://metrics.solana.com:8888/ (production enviroment)
-* https://metrics.solana.com:8889/ (testing enviroment)
+* https://metrics.solana.com:8888/ (production environment)
+* https://metrics.solana.com:8889/ (testing environment)
 
 For local cluster deployments you should use:
 
@@ -32,7 +32,7 @@ The cluster telemetry dashboard shows the current state of the cluster:
 
 1. Cluster Stability
 2. Validator Streamer
-3. Tomer Consensus
+3. Tower Consensus
 4. IP Network
 5. Snapshots
 6. RPC Send Transaction Service
@@ -41,10 +41,10 @@ The cluster telemetry dashboard shows the current state of the cluster:
 
 The fee market dashboard shows:
 
-1. Total Priorization Fees
-2. Block Min Priorization Fees
+1. Total Prioritization Fees
+2. Block Min Prioritization Fees
 3. Cost Tracker Stats
 
 ### Ping Results
 
-The ping reults dashboard displays relevant information about the Ping API
+The Ping results dashboard displays relevant information about the Ping API

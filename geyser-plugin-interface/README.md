@@ -6,7 +6,7 @@
 
 # Solana Geyser Plugin Interface
 
-This crate enables an plugin to be added into the Solana Validator runtime to
+This crate enables a plugin to be added into the Solana Validator runtime to
 take actions at the time of account updates or block and transaction processing;
 for example, saving the account state to an external database. The plugin must
 implement the `GeyserPlugin` trait. Please see the detail of the

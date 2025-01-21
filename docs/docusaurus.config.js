@@ -167,7 +167,7 @@ module.exports = {
             },
             {
               label: "Twitter »",
-              href: "https://twitter.com/solana",
+              href: "https://x.com/solana",
             },
             {
               label: "Forum »",
