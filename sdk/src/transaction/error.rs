@@ -149,6 +149,34 @@ pub enum TransactionError {
         "Transaction results in an account ({account_index}) without insufficient funds for rent"
     )]
     InsufficientFundsForRent { account_index: u8 },
+
+    /// Transaction exceeded max loaded accounts data size cap
+    #[error("Transaction exceeded max loaded accounts data size cap")]
+    MaxLoadedAccountsDataSizeExceeded,
+
+    /// LoadedAccountsDataSizeLimit set for transaction must be greater than 0.
+    #[error("LoadedAccountsDataSizeLimit set for transaction must be greater than 0.")]
+    InvalidLoadedAccountsDataSizeLimit,
+
+    /// Sanitized transaction differed before/after feature activiation. Needs to be resanitized.
+    #[error("ResanitizationNeeded")]
+    ResanitizationNeeded,
+
+    /// Program execution is temporarily restricted on an account.
+    #[error("Execution of the program referenced by account at index {account_index} is temporarily restricted.")]
+    ProgramExecutionTemporarilyRestricted { account_index: u8 },
+
+    /// The total balance before the transaction does not equal the total balance after the transaction
+    #[error("Sum of account balances before and after transaction do not match")]
+    UnbalancedTransaction,
+
+    /// Program cache hit max limit.
+    #[error("Program cache hit max limit")]
+    ProgramCacheHitMaxLimit,
+
+    /// Commit cancelled internally.
+    #[error("Commit cancelled internally")]
+    CommitCancelled,
 }
 
 impl From<SanitizeError> for TransactionError {
