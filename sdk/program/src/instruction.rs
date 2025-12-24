@@ -224,8 +224,8 @@ pub enum InstructionError {
     /// Borsh versions. Only programs can use this error because they are
     /// consistent across Solana software versions.
     ///
-    #[error("Failed to serialize or deserialize account data: {0}")]
-    BorshIoError(String),
+    #[error("Failed to serialize or deserialize account data")]
+    BorshIoError,
 
     /// An account does not have enough lamports to be rent-exempt
     #[error("An account does not have enough lamports to be rent-exempt")]

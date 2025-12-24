@@ -365,7 +365,6 @@ impl Default for TransactionStatusMeta {
 #[serde(rename_all = "camelCase")]
 pub struct UiTransactionStatusMeta {
     pub err: Option<TransactionError>,
-    pub status: TransactionResult<()>, // This field is deprecated.  See https://github.com/solana-labs/solana/issues/9302
     pub fee: u64,
     pub pre_balances: Vec<u64>,
     pub post_balances: Vec<u64>,
@@ -441,7 +440,6 @@ impl UiTransactionStatusMeta {
         let account_keys = AccountKeys::new(static_keys, Some(&meta.loaded_addresses));
         Self {
             err: meta.status.clone().err(),
-            status: meta.status,
             fee: meta.fee,
             pre_balances: meta.pre_balances,
             post_balances: meta.post_balances,
@@ -474,7 +472,6 @@ impl UiTransactionStatusMeta {
     fn build_simple(meta: TransactionStatusMeta, show_rewards: bool) -> Self {
         Self {
             err: meta.status.clone().err(),
-            status: meta.status,
             fee: meta.fee,
             pre_balances: meta.pre_balances,
             post_balances: meta.post_balances,
@@ -504,7 +501,6 @@ impl From<TransactionStatusMeta> for UiTransactionStatusMeta {
     fn from(meta: TransactionStatusMeta) -> Self {
         Self {
             err: meta.status.clone().err(),
-            status: meta.status,
             fee: meta.fee,
             pre_balances: meta.pre_balances,
             post_balances: meta.post_balances,
@@ -1033,6 +1029,12 @@ pub enum EncodedTransaction {
     Accounts(UiAccountsList),
 }
 
+impl std::default::Default for EncodedTransaction {
+    fn default() -> Self {
+        Self::LegacyBinary(String::new())
+    }
+}
+
 impl EncodableWithMeta for VersionedTransaction {
     type Encoded = EncodedTransaction;
     fn encode_with_meta(
@@ -1543,5 +1545,25 @@ mod test {
             serde_json::to_value(ui_meta_parse_no_rewards).unwrap(),
             expected_json_output_value
         );
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_deserialize_encoded_transaction() {
+        const JSON_STR: &str = include_str!("./tests/transaction-1.json");
+        let tx: EncodedTransactionWithStatusMeta = serde_json::from_str(JSON_STR).unwrap();
+
+        eprintln!("tx {:?}", tx);
+    }
+
+    #[test]
+    fn test_deserialize_ui_confirmed_block() {
+        const JSON_STR: &str = include_str!("./tests/388662392.json");
+        let res: UiConfirmedBlock = serde_json::from_str(JSON_STR).unwrap();
+        eprintln!("res {:?}", res);
     }
 }
