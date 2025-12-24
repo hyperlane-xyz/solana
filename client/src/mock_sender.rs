@@ -220,7 +220,6 @@ impl RpcSender for MockSender {
                         }),
                     meta: Some(UiTransactionStatusMeta {
                             err: None,
-                            status: Ok(()),
                             fee: 0,
                             pre_balances: vec![499999999999999950, 50, 1],
                             post_balances: vec![499999999999999950, 50, 1],
